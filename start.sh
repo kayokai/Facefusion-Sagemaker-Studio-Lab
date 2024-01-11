@@ -15,7 +15,8 @@ conda activate facefusion
 # Get Facefusion from GitHub
 if [ ! -d "facefusion" ]
 then
-  git clone https://github.com/facefusion/facefusion --branch 2.0.0 --single-branch
+  # git clone https://github.com/facefusion/facefusion --branch 2.0.0 --single-branch
+  git clone https://github.com/oskn-fish/facefusion.git
 fi
 
 # Update the installation if the parameter "update" was passed by running
