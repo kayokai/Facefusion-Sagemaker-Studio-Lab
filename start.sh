@@ -32,7 +32,7 @@ fi
 if [ $# -eq 1 ] && [ $1 = "update" ] || [ $env_exists = 0 ]
 then
   cd facefusion
-  python install.py --torch cpu --onnxruntime default
+  python install.py --torch cpu --onnxruntime default --skip-venv
   # pip install -r facefusion/requirements.txt
   pip uninstall -y opencv-python
   conda install glib=2.51.0 -y
@@ -41,17 +41,21 @@ then
   # cd ..
   pip install pyngrok
   # conda install opencv -y
-  conda install ffmpeg
+  conda install ffmpeg -y
+  cd ..
 fi
 
 # Start facefusion with ngrok
 if [ $# -eq 0 ]
 then
-  # cd ..
-  python start-ngrok.py 
+    python start-ngrok.py
 elif [ $1 = "reset" ]
 then
-  python start-ngrok.py --reset 
+  # cd ..
+  python start-ngrok.py --reset
+elif [ $# -eq 1 ]
+then
+  python start-ngrok.py --token $1
 fi
 
 # https://stackoverflow.com/questions/70290180/how-to-install-python-opencv-in-amazon-sagemaker

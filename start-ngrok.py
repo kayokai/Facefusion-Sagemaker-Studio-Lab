@@ -81,9 +81,9 @@ def main():
             args.domain = ''
             if saved_data and saved_data['domain']:
                 args.domain = saved_data['domain']
-            else:
-                args.domain = input('Enter the domain: ')
-                saved_data['domain'] = args.domain
+#            else:
+#               args.domain = input('Enter the domain: ')
+#                saved_data['domain'] = args.domain
 
     save_data(saved_data)
 
@@ -98,7 +98,7 @@ def main():
 
       signal.signal(signal.SIGINT, signal_handler)
       print('Press Ctrl+C to exit')
-      cmd = 'cd facefusion; python run.py --execution-providers cuda'
+      cmd = 'cd facefusion; python run.py --execution-providers cpu'
       env = os.environ.copy()
       subprocess.run(cmd, shell=True, env=env)
       signal.pause()
